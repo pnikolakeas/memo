@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="memo.web">
+
+	<path id="gwt.classpath">
+		<path path="${classpath}" />
+		<pathelement location="${src.dir}" />
+	</path>
+
+	<target name="gwt.compile">
+		<mkdir dir="${war.dir}" />
+		<java classname="com.google.gwt.dev.Compiler" fork="true">
+			<classpath refid="gwt.classpath" />
+			<arg line="-war ${war.dir} ${gwt.module} -strict" />
+			<!-- <arg line="-war ${war.dir} ${gwt.module} -logLevel TRACE" /> -->
+		</java>
+	</target>
+
+	<target name="gwt.debug">
+		<!-- <echo message="${classpath}" /> -->
+		<java classname="com.google.gwt.dev.DevMode" fork="true">
+			<classpath refid="gwt.classpath" />
+			<!-- http://java.sun.com/javase/technologies/core/toolsapis/jpda/ -->
+			<jvmarg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:8000" />
+			<arg line="-war ${war.dir} -noserver -startupUrl ${gwt.url} ${gwt.module}" />
+		</java>
+	</target>
+
+</project>

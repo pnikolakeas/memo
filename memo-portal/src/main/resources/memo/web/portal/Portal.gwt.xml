@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module rename-to="gwt">
+
+	<inherits name="com.google.gwt.user.theme.standard.Standard" />
+	<inherits name='com.google.gwt.activity.Activity' />
+
+	<inherits name="mojo.gwt.i18n.I18N" />
+	<inherits name="mojo.gwt.ui.UI" />
+	<inherits name="memo.gwt.common.Common" />
+
+	<entry-point class="memo.web.portal.client.PortalEntryPoint" />
+	<stylesheet src="../resources/style.css" />
+	<script src="../resources/script.js" />
+
+	<replace-with class="memo.web.portal.client.PortalClientFactory">
+		<when-type-is class="mojo.gwt.ui.client.activity.ClientFactory" />
+	</replace-with>
+
+	<set-property name="locale" value="default" />
+	<!-- <set-property name="user.agent" value="ie6" /> -->
+	<set-property name="user.agent" value="gecko1_8,safari" />
+
+</module>

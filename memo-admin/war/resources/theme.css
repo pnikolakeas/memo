@@ -1,0 +1,52 @@
+h1 {
+	font-size: 2em;
+	margin-bottom: 0.5em;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-bottom: 0.67em;
+}
+
+h3 {
+	font-size: 1.17em;
+	margin-bottom: 0.86em;
+}
+
+h5 {
+	font-size: .83em;
+	margin-bottom: 1.21em;
+}
+
+h6 {
+	font-size: .75em;
+	margin-bottom: 1.34em;
+}
+
+html body {
+	font: 14.4px Arial, Helvetica, sans-serif;
+}
+
+span, div, p,
+table tr td {
+	font-size: 1em;
+}
+
+h1, h2 {
+	margin-bottom: 16px;
+}
+
+h3, h4, p {
+	margin-bottom: 8px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.content a:visited {
+}

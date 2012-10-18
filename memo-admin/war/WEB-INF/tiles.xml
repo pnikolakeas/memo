@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="exception-template" template="/WEB-INF/views/exception-template.jsp" />
+
+	<!-- spring-mvc.xml -->
+	<definition name="/web/exception" extends="exception-template">
+		<put-attribute name="body" value="/WEB-INF/views/web/exception.jsp" />
+	</definition>
+
+	<!-- spring-mvc.xml -->
+	<definition name="/web/web-exception" extends="exception-template">
+		<put-attribute name="body" value="/WEB-INF/views/web/web-exception.jsp" />
+	</definition>
+
+</tiles-definitions>

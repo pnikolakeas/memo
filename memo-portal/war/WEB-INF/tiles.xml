@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+
+	<definition name="PortalController" template="/WEB-INF/classes/memo/web/portal/server/PortalController_template.jsp" />
+
+	<definition name="/home" extends="PortalController">
+		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doHome.jsp" />
+	</definition>
+
+	<definition name="/testWait" extends="PortalController">
+		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doTestWait.jsp" />
+	</definition>
+
+	<definition name="/testLogin.pro" extends="PortalController">
+		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doTestLogin.jsp" />
+	</definition>
+
+
+	<definition name="OpenIDLoginController" template="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_template.jsp" />
+
+	<definition name="/openid/setup" extends="OpenIDLoginController">
+		<put-attribute name="body" value="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_doSetup.jsp" />
+	</definition>
+
+	<definition name="/openid/verify" extends="OpenIDLoginController">
+		<put-attribute name="body" value="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_doVerify.jsp" />
+	</definition>
+
+
+	<definition name="exception-template" template="/WEB-INF/views/exception-template.jsp" />
+
+	<!-- spring-mvc.xml -->
+	<definition name="/web/exception" extends="exception-template">
+		<put-attribute name="body" value="/WEB-INF/views/web/exception.jsp" />
+	</definition>
+
+	<!-- spring-mvc.xml -->
+	<definition name="/web/web-exception" extends="exception-template">
+		<put-attribute name="body" value="/WEB-INF/views/web/web-exception.jsp" />
+	</definition>
+
+
+</tiles-definitions>
