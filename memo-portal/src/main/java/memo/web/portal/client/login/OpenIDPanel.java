@@ -142,7 +142,7 @@ public class OpenIDPanel extends Composite {
 		$wnd.open(url, name);
 	}-*/;
 
-	interface Messages extends JSConstants {
+	public interface Messages extends JSConstants {
 
 		String buttonsLabel();
 

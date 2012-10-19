@@ -16,15 +16,65 @@
  */
 package memo.web.portal.client;
 
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
+
+import mojo.gwt.ui.client.WebDialog;
 
 public class UIHelper {
 
 	public static final String MAIN_CONTAINER_ID = "contentContainer";
 	public static final String MAIN_COMPONENT_ID = "contentComponent";
 
+	private static WebDialog dialog;
+
 	public static Panel getMainContainer() {
 		return RootPanel.get(MAIN_CONTAINER_ID);
+	}
+
+	public static void closeDialog() {
+		if (dialog != null) {
+			dialog.hide();
+		}
+	}
+
+	public static void openDialog(Widget widget, String text) {
+		if (dialog == null) {
+			dialog = new WebDialog();
+			dialog.addCloseHandler(new CloseHandler<PopupPanel>() {
+
+				@Override
+				public void onClose(CloseEvent<PopupPanel> event) {
+					dialog = null;
+				}
+			});
+			dialog.setText(text);
+			dialog.setWidget(widget);
+			dialog.setAnimationEnabled(true);
+			dialog.setGlassEnabled(true);
+			// dialog.setModal(true);
+			dialog.setClosable(true);
+			dialog.center();
+			dialog.show();
+		}
+	}
+
+	public static void reopenDialog(final Widget widget, final String text) {
+		closeDialog();
+
+		Timer timer = new Timer() {
+
+			@Override
+			public void run() {
+				openDialog(widget, text);
+			}
+		};
+
+		timer.schedule(500);
 	}
 }

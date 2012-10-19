@@ -56,8 +56,12 @@
 			</resource>
 
 			<resource>
-				<!-- java sources and web resources -->
+				<!-- gwt sources and web resources -->
 				<directory>${project.basedir}/src/main/java</directory>
+				<includes>
+					<include>memo/gwt/*/client/**</include>
+					<include>**/*.jsp</include>
+				</includes>
 			</resource>
 
 		</resources>
@@ -81,10 +85,11 @@
 					</tasks>
 				</configuration>
 
-				<!-- Configuration for GWT compile mode. -->
-				<!-- Participates in the default build life-cycle. e.g. mvn clean compile package -->
 				<executions>
+
+					<!-- Configuration for GWT compile mode. -->
 					<execution>
+						<id>gwt.compile</id>
 						<phase>prepare-package</phase>
 						<configuration>
 							<tasks>
@@ -99,6 +104,22 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
+
+					<!-- Extract JSP pages from JAR files. -->
+					<execution>
+						<id>jsp.extract</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<property name="war.dir" value="${project.build.directory}/${project.build.finalName}" />
+								<ant target="jsp.extract" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
 				</executions>
 			</plugin>
 

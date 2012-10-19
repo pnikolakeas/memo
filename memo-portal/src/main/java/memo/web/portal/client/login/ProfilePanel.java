@@ -35,9 +35,9 @@ import memo.gwt.common.client.model.UserModel;
 
 public abstract class ProfilePanel extends Composite {
 
-	protected static final Messages msg = GWT.create(Messages.class);
+	public static final Messages msg = GWT.create(Messages.class);
 
-	protected static final String STYLENAME = "ProfilePanel";
+	public static final String STYLENAME = "ProfilePanel";
 
 	private ProfileForm formPanel;
 	private Button submitButton;
@@ -124,7 +124,7 @@ public abstract class ProfilePanel extends Composite {
 		return cancelButton;
 	}
 
-	protected interface Messages extends JSConstants {
+	public interface Messages extends JSConstants {
 
 		String greeting();
 

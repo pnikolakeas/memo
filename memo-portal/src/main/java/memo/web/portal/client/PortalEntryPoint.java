@@ -28,8 +28,7 @@ public class PortalEntryPoint extends PortalClientFactory implements EntryPoint 
 
 	public void onModuleLoad() {
 		initClientFactory();
-
-		Session.initJS();
+		initJS();
 
 		initForum();
 		initMembers();
@@ -42,7 +41,9 @@ public class PortalEntryPoint extends PortalClientFactory implements EntryPoint 
 			@Override
 			public void onClick(ClickEvent event) {
 				event.preventDefault();
-				Session.require();
+
+				Label moduleBaseURL = new Label("ModuleBaseURL: " + GWT.getModuleBaseURL());
+				UIHelper.getMainContainer().add(moduleBaseURL);
 			}
 		});
 	}
@@ -54,9 +55,6 @@ public class PortalEntryPoint extends PortalClientFactory implements EntryPoint 
 			@Override
 			public void onClick(ClickEvent event) {
 				event.preventDefault();
-
-				Label moduleBaseURL = new Label("ModuleBaseURL: " + GWT.getModuleBaseURL());
-				UIHelper.getMainContainer().add(moduleBaseURL);
 
 				Label hostPageBaseURL = new Label("HostPageBaseURL: " + GWT.getHostPageBaseURL());
 				UIHelper.getMainContainer().add(hostPageBaseURL);

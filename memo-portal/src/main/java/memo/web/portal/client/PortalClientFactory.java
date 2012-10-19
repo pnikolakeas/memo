@@ -24,6 +24,7 @@ import com.google.gwt.dom.client.Node;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
@@ -31,10 +32,18 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
+import mojo.gwt.data.client.util.JSObject;
+import mojo.gwt.i18n.client.JSConstants;
 import mojo.gwt.ui.client.activity.ClientFactory;
 import mojo.gwt.ui.client.content.ContentActivity.ContentPlace;
 
+import memo.gwt.common.client.model.UserModel;
+import memo.web.portal.client.login.LoginContainer;
+import memo.web.portal.client.login.ProfilePanel;
+
 public class PortalClientFactory implements ClientFactory {
+
+	public static final Messages msg = GWT.create(Messages.class);
 
 	private EventBus eventBus;
 	private ActivityMapper activityMapper;
@@ -42,6 +51,17 @@ public class PortalClientFactory implements ClientFactory {
 	private PlaceController placeController;
 	private PlaceHistoryMapper historyMapper;
 	private PlaceHistoryHandler historyHandler;
+
+	/**
+	 * Setup callback functions.
+	 */
+	public static native void initJS()
+	/*-{
+		$wnd.session = {
+			signIn: @memo.web.portal.client.PortalClientFactory::signIn(),
+			signUp: @memo.web.portal.client.PortalClientFactory::signUp(Lmojo/gwt/data/client/util/JSObject;)
+		};
+	}-*/;
 
 	/**
 	 * Initializes the MVP framework.
@@ -112,5 +132,46 @@ public class PortalClientFactory implements ClientFactory {
 	@Override
 	public String getMainComponentId() {
 		return UIHelper.MAIN_COMPONENT_ID;
+	}
+
+	@Override
+	public void requireLogin() {
+		LoginContainer loginContainer = new LoginContainer();
+		UIHelper.openDialog(loginContainer, msg.loginPanel());
+	}
+
+	/**
+	 * Callback; finalizes the login process.
+	 */
+	public static void signIn() {
+		Window.Location.reload();
+	}
+
+	/**
+	 * Callback; finalizes the register process.
+	 */
+	public static void signUp(JSObject userJSO) {
+		UserModel userModel = new UserModel(userJSO);
+		ProfilePanel profilePanel = new ProfilePanel(userModel) {
+
+			@Override
+			public void onSubmit() {
+				signIn();
+			}
+
+			@Override
+			public void onCancel() {
+				UIHelper.closeDialog();
+			}
+		};
+
+		UIHelper.reopenDialog(profilePanel, msg.profilePanel());
+	}
+
+	public interface Messages extends JSConstants {
+
+		String loginPanel();
+
+		String profilePanel();
 	}
 }

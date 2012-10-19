@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -29,24 +28,5 @@ public class PortalController {
 	@RequestMapping(value = "/home")
 	public ModelAndView doHome(HttpServletRequest request) {
 		return new ModelAndView("/home");
-	}
-
-	@RequestMapping(value = "/testWait")
-	public ModelAndView doTestWait(HttpServletRequest request, @RequestParam int timeout) {
-		synchronized (this) {
-			try {
-				wait(timeout);
-			}
-			catch (InterruptedException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		return new ModelAndView("/testWait");
-	}
-
-	@RequestMapping(value = "/testLogin.pro")
-	public ModelAndView doTestLogin(HttpServletRequest request) {
-		return new ModelAndView("/testLogin.pro");
 	}
 }

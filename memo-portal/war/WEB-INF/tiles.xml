@@ -5,44 +5,46 @@
 
 <tiles-definitions>
 
+	<!-- MAIN TEMPLATE -->
 
-	<definition name="PortalController" template="/WEB-INF/classes/memo/web/portal/server/PortalController_template.jsp" />
+	<definition name="main-template" template="/WEB-INF/views/main-template.jsp" />
 
-	<definition name="/home" extends="PortalController">
+	<definition name="/home" extends="main-template">
 		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doHome.jsp" />
 	</definition>
 
-	<definition name="/testWait" extends="PortalController">
-		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doTestWait.jsp" />
+	<definition name="/test/login.pro" extends="main-template">
+		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/test/TestController_doLogin.jsp" />
 	</definition>
 
-	<definition name="/testLogin.pro" extends="PortalController">
-		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doTestLogin.jsp" />
+	<definition name="/test/wait" extends="main-template">
+		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/test/TestController_doWait.jsp" />
 	</definition>
 
+	<!-- OPENID TEMPLATE -->
 
-	<definition name="OpenIDLoginController" template="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_template.jsp" />
+	<definition name="openid-template" template="/WEB-INF/views/openid-template.jsp" />
 
-	<definition name="/openid/setup" extends="OpenIDLoginController">
-		<put-attribute name="body" value="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_doSetup.jsp" />
+	<definition name="/openid/setup" extends="openid-template">
+		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/login/OpenIDLoginController_doSetup.jsp" />
 	</definition>
 
-	<definition name="/openid/verify" extends="OpenIDLoginController">
-		<put-attribute name="body" value="/WEB-INF/classes/memo/web/portal/server/login/OpenIDLoginController_doVerify.jsp" />
+	<definition name="/openid/verify" extends="openid-template">
+		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/login/OpenIDLoginController_doVerify.jsp" />
 	</definition>
 
+	<!-- EXCEPTION TEMPLATE -->
 
 	<definition name="exception-template" template="/WEB-INF/views/exception-template.jsp" />
 
-	<!-- spring-mvc.xml -->
-	<definition name="/web/exception" extends="exception-template">
-		<put-attribute name="body" value="/WEB-INF/views/web/exception.jsp" />
+	<!-- view name defined in spring-mvc.xml -->
+	<definition name="/web/any-exception" extends="exception-template">
+		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/view/any-exception.jsp" />
 	</definition>
 
-	<!-- spring-mvc.xml -->
+	<!-- view name defined in spring-mvc.xml -->
 	<definition name="/web/web-exception" extends="exception-template">
-		<put-attribute name="body" value="/WEB-INF/views/web/web-exception.jsp" />
+		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/view/web-exception.jsp" />
 	</definition>
-
 
 </tiles-definitions>

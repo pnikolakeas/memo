@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="memo.web">
+<project name="memo">
 
 	<path id="gwt.classpath">
 		<path path="${classpath}" />
@@ -23,6 +23,23 @@
 			<jvmarg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:8000" />
 			<arg line="-war ${war.dir} -noserver -startupUrl ${gwt.url} ${gwt.module}" />
 		</java>
+	</target>
+
+	<target name="jsp.extract">
+		<unjar dest="${war.dir}/WEB-INF/jsp">
+			<patternset>
+				<include name="**/*.jsp" />
+			</patternset>
+			<fileset dir="${war.dir}/WEB-INF/lib">
+				<include name="mojo-*.jar" />
+				<include name="memo-*.jar" />
+			</fileset>
+		</unjar>
+		<copy todir="${war.dir}/WEB-INF/jsp">
+			<fileset dir="${war.dir}/WEB-INF/classes">
+				<include name="**/*.jsp" />
+			</fileset>
+		</copy>
 	</target>
 
 </project>

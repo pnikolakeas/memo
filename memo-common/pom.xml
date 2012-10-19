@@ -66,10 +66,11 @@
 			</resource>
 
 			<resource>
-				<!-- java sources and web resources -->
+				<!-- gwt sources and web resources -->
 				<directory>${project.basedir}/src/main/java</directory>
 				<includes>
 					<include>memo/gwt/*/client/**</include>
+					<include>**/*.jsp</include>
 				</includes>
 			</resource>
 
