@@ -111,7 +111,6 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<property name="war.dir" value="${project.build.directory}/${project.build.finalName}" />
 								<ant target="jsp.extract" />
 							</tasks>
 						</configuration>

@@ -15,5 +15,5 @@
 <%-- as such the redirect url will now be clean --%>
 
 <c:if test="${sessionScope.jsessionrd}">
-	<c:redirect url="/app/home" />
+	<c:redirect url="/app/" />
 </c:if>

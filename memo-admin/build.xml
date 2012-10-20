@@ -13,6 +13,11 @@
 			<arg line="-war ${war.dir} ${gwt.module} -strict" />
 			<!-- <arg line="-war ${war.dir} ${gwt.module} -logLevel TRACE" /> -->
 		</java>
+		<!-- cache properties -->
+		<pathconvert property="classpath.prop" refid="gwt.classpath" />
+		<echo file="build.properties" message="war.dir = ${war.dir}${line.separator}" />
+		<echo file="build.properties" message="gwt.module = ${gwt.module}${line.separator}" append="true" />
+		<echo file="build.properties" message="gwt.classpath = ${classpath.prop}${line.separator}" append="true" />
 	</target>
 
 	<target name="gwt.debug">
@@ -26,6 +31,7 @@
 	</target>
 
 	<target name="jsp.extract">
+		<property file="build.properties" />
 		<unjar dest="${war.dir}/WEB-INF/jsp">
 			<patternset>
 				<include name="**/*.jsp" />

@@ -7,5 +7,5 @@ out
 .classpath
 .project
 
-# dao
 derby.log
+build.properties
