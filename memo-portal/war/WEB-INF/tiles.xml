@@ -10,15 +10,15 @@
 	<definition name="main-template" template="/WEB-INF/views/main-template.jsp" />
 
 	<definition name="/home" extends="main-template">
-		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/PortalController_doHome.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/memo/web/portal/server/PortalController_doHome.jsp" />
 	</definition>
 
 	<definition name="/test/login.pro" extends="main-template">
-		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/test/TestController_doLogin.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/memo/web/portal/server/test/TestController_doLogin.jsp" />
 	</definition>
 
 	<definition name="/test/wait" extends="main-template">
-		<put-attribute name="content" value="/WEB-INF/classes/memo/web/portal/server/test/TestController_doWait.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/memo/web/portal/server/test/TestController_doWait.jsp" />
 	</definition>
 
 	<!-- OPENID TEMPLATE -->
@@ -26,11 +26,11 @@
 	<definition name="openid-template" template="/WEB-INF/views/openid-template.jsp" />
 
 	<definition name="/openid/setup" extends="openid-template">
-		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/login/OpenIDLoginController_doSetup.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/login/OpenIDLoginController_doSetup.jsp" />
 	</definition>
 
 	<definition name="/openid/verify" extends="openid-template">
-		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/login/OpenIDLoginController_doVerify.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/login/OpenIDLoginController_doVerify.jsp" />
 	</definition>
 
 	<!-- EXCEPTION TEMPLATE -->
@@ -39,12 +39,12 @@
 
 	<!-- view name defined in spring-mvc.xml -->
 	<definition name="/web/any-exception" extends="exception-template">
-		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/view/any-exception.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/view/any-exception.jsp" />
 	</definition>
 
 	<!-- view name defined in spring-mvc.xml -->
 	<definition name="/web/web-exception" extends="exception-template">
-		<put-attribute name="body" value="/WEB-INF/classes/mojo/web/view/web-exception.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/view/web-exception.jsp" />
 	</definition>
 
 </tiles-definitions>

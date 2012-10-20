@@ -67,7 +67,10 @@ To work with GWT development mode, the following are also necessary.
    1. Map the, maven resolved, jar dependencies:
    /out/memo-portal-1.0-SNAPSHOT/WEB-INF/lib       WEB-INF/lib
 
-   2. Map the, GWT generated, javascript code:
+   2. Map the, maven resolved, jsp files:
+   /out/memo-portal-1.0-SNAPSHOT/WEB-INF/jsp       WEB-INF/jsp
+
+   3. Map the, GWT generated, javascript code:
    /out/memo-portal-1.0-SNAPSHOT/gwt               gwt
 
 5. Open the "External Tool Configurations" and create one as such:

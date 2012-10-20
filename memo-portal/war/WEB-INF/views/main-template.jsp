@@ -24,8 +24,10 @@
 
 		<c:if test="${not empty contextUser}">
 			<script type="text/javascript">
-				var User = {
-					nickname: "${contextUser.nickname}"
+				window.session.user = {
+					nickname : "${contextUser.nickname}",
+					fullname : "${contextUser.fullname}",
+					gender   : "${contextUser.gender}"
 				};
 			</script>
 		</c:if>

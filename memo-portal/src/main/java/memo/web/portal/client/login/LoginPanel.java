@@ -56,7 +56,7 @@ public class LoginPanel extends Composite {
 		initWidget(binder.createAndBindUi(this));
 	}
 
-	interface Messages extends JSConstants {
+	public interface Messages extends JSConstants {
 
 		String username();
 

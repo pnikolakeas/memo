@@ -43,9 +43,9 @@ import memo.gwt.common.client.store.LanguageStore;
 
 public class ProfileForm extends FormPanel {
 
-	protected static final Messages msg = GWT.create(Messages.class);
+	public static final Messages msg = GWT.create(Messages.class);
 
-	protected static final String STYLENAME = "ProfileForm";
+	public static final String STYLENAME = "ProfileForm";
 
 	private TextBox nickname;
 	private TextBox password;
@@ -232,7 +232,7 @@ public class ProfileForm extends FormPanel {
 		return terms;
 	}
 
-	protected interface Messages extends JSConstants {
+	public interface Messages extends JSConstants {
 
 		String nickname();
 
