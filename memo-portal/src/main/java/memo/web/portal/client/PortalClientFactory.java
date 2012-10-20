@@ -57,10 +57,10 @@ public class PortalClientFactory implements ClientFactory {
 	 */
 	public static native void initJS()
 	/*-{
-		$wnd.session = {
+		$wnd.obj.ns('session', {
 			signIn: @memo.web.portal.client.PortalClientFactory::signIn(),
 			signUp: @memo.web.portal.client.PortalClientFactory::signUp(Lmojo/gwt/data/client/util/JSObject;)
-		};
+		});
 	}-*/;
 
 	/**
