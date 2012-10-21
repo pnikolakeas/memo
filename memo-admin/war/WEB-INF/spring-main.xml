@@ -7,7 +7,7 @@
 	<import resource="classpath:mojo-services.xml" />
 	<import resource="classpath:mojo-web.xml" />
 
-	<bean id="auditContext" class="mojo.web.core.WebContextFactoryBean" />
+	<bean id="auditContext" class="mojo.web.core.ProxyContext" />
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource">
