@@ -34,23 +34,15 @@ import mojo.dao.model.user.Country;
 @RequestMapping("/user/country")
 public class CountryController {
 
-	private DataService<Country> countryService;
-
-	public DataService<Country> getCountryService() {
-		return countryService;
-	}
-
 	@Autowired
 	@Qualifier("countryService")
-	public void setCountryService(DataService<Country> countryService) {
-		this.countryService = countryService;
-	}
+	private DataService<Country> countryService;
 
 	@ResponseBody
-	@RequestMapping(value = "/fetch", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Country> doFetch() {
-		Select<Country> spec = new Select<Country>().order("name");
-		DataPage<Country> page = countryService.select(spec);
+		Select<Country> select = new Select<Country>().order("name");
+		DataPage<Country> page = countryService.select(select);
 		covertCodesToUppercase(page.getData());
 		return page.getData();
 	}

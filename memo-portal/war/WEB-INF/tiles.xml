@@ -25,11 +25,11 @@
 
 	<definition name="openid-template" template="/WEB-INF/views/openid-template.jsp" />
 
-	<definition name="/openid/setup" extends="openid-template">
+	<definition name="/login/openid/setup" extends="openid-template">
 		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/login/OpenIDLoginController_doSetup.jsp" />
 	</definition>
 
-	<definition name="/openid/verify" extends="openid-template">
+	<definition name="/login/openid/verify" extends="openid-template">
 		<put-attribute name="body" value="/WEB-INF/jsp/mojo/web/login/OpenIDLoginController_doVerify.jsp" />
 	</definition>
 

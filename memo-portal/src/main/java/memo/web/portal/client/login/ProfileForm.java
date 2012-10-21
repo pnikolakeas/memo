@@ -77,7 +77,7 @@ public class ProfileForm extends FormPanel {
 		placeField(layout, 4, 1, "&nbsp;", getTerms());
 
 		addStyleName(STYLENAME);
-		setAction(GWT.getModuleBaseURL() + "../app/openid/signup");
+		setAction(GWT.getModuleBaseURL() + "../app/login/openid/signup");
 		setEncoding(FormPanel.ENCODING_URLENCODED);
 		setMethod(FormPanel.METHOD_POST);
 		setWidget(layout);

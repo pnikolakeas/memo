@@ -127,7 +127,7 @@ public class OpenIDPanel extends Composite {
 	}
 
 	private void openPopup(String identifier, int width, int height) {
-		String setupURL = GWT.getModuleBaseURL() + "../app/openid/setup";
+		String setupURL = GWT.getModuleBaseURL() + "../app/login/openid/setup";
 		String url = setupURL + "?openid_identifier=" + URL.encodeQueryString(identifier);
 		String features = "width=" + width + ",height=" + height;
 		openPopup(url, features);

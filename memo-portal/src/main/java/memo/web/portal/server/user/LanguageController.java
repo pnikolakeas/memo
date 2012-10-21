@@ -34,23 +34,15 @@ import mojo.dao.model.user.Language;
 @RequestMapping("/user/language")
 public class LanguageController {
 
-	private DataService<Language> languageService;
-
-	public DataService<Language> getLanguageService() {
-		return languageService;
-	}
-
 	@Autowired
 	@Qualifier("languageService")
-	public void setLanguageService(DataService<Language> languageService) {
-		this.languageService = languageService;
-	}
+	private DataService<Language> languageService;
 
 	@ResponseBody
-	@RequestMapping(value = "/fetch", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Language> doFetch() {
-		Select<Language> spec = new Select<Language>().order("name");
-		DataPage<Language> page = languageService.select(spec);
+		Select<Language> select = new Select<Language>().order("name");
+		DataPage<Language> page = languageService.select(select);
 		covertCodesToLowerCase(page.getData());
 		return page.getData();
 	}
