@@ -32,25 +32,17 @@ import mojo.dao.model.user.User;
 @RequestMapping(value = "/user")
 public class UserController {
 
-	private DataService<User> userService;
-
-	public DataService<User> getUserService() {
-		return userService;
-	}
-
 	@Autowired
 	@Qualifier("userService")
-	public void setUserService(DataService<User> userService) {
-		this.userService = userService;
-	}
+	private DataService<User> userService;
 
 	@ResponseBody
-	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	@RequestMapping(value = "/find.pro", method = RequestMethod.GET)
 	public User doFind(@RequestParam Integer id) {
 		return userService.findById(id);
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update.pro", method = RequestMethod.POST)
 	public void doUpdate(@RequestBody User user) {
 		userService.update(user);
 	}
